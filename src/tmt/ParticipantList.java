@@ -2,6 +2,7 @@ package tmt;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class ParticipantList {
@@ -11,6 +12,18 @@ public class ParticipantList {
     }
     public void remove(Parcicipant parcicipant){
         listMap.remove(parcicipant);
+    }
+    public void fixingHotLap(Parcicipant parcicipant, long timeOfLap){
+        listMap.get(parcicipant).add(new TestTime(timeOfLap));
+    }
+
+    public void showAllTimesOfLap(Parcicipant parcicipant){
+        System.out.print("Time of " + parcicipant + "'s laps:\n{");
+        Iterator<TestTime> iterator = listMap.get(parcicipant).iterator();
+        while (iterator.hasNext()){
+            System.out.println(iterator.next());
+        }
+        System.out.println('}');
     }
 
     @Override
