@@ -8,7 +8,7 @@ public class Stopwatch {
         this.workList = workList;
     }
     private ParticipantList workList;
-    Map<Parcicipant,Long> runners = new HashMap<>();
+    private Map<Parcicipant,Long> runners = new HashMap<>();
 
     public void removeFromLap(Parcicipant parcicipant){
         runners.remove(parcicipant);
