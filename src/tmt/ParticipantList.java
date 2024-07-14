@@ -21,6 +21,10 @@ public class ParticipantList {
     }
 
     public void showAllTimesOfLap(Parcicipant parcicipant){
+        if(!listMap.containsKey(parcicipant)){
+            System.out.print(parcicipant + " is not in this list\n");
+            return;
+        }
         System.out.print("Time of " + parcicipant + "'s laps:\n{");
         Iterator<TestTime> iterator = listMap.get(parcicipant).iterator();
         while (iterator.hasNext()){

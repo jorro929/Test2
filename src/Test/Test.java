@@ -34,6 +34,7 @@ public class Test {
         participantList.showAllTimesOfLap(parcicipant2);
         participantList.showAllTimesOfLap(parcicipant3);
         Thread.sleep(3000);
+        participantList.remove(parcicipant3);
         stopwatch.startMeasuring(parcicipant1);
         stopwatch.startMeasuring(parcicipant2);
         stopwatch.startMeasuring(parcicipant3);
