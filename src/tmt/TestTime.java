@@ -15,6 +15,6 @@ public class TestTime {
 
     @Override
     public String toString() {
-        return hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
+        return hours + "h" + minutes + "m" + seconds + "s" + milliseconds;
     }
 }

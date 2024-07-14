@@ -13,8 +13,11 @@ public class ParticipantList {
     public void remove(Parcicipant parcicipant){
         listMap.remove(parcicipant);
     }
-    public void fixingHotLap(Parcicipant parcicipant, long timeOfLap){
+    public void registrationTimeOfLap(Parcicipant parcicipant, long timeOfLap){
         listMap.get(parcicipant).add(new TestTime(timeOfLap));
+    }
+    public boolean contains(Parcicipant parcicipant){
+        return listMap.containsKey(parcicipant);
     }
 
     public void showAllTimesOfLap(Parcicipant parcicipant){
