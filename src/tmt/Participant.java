@@ -2,9 +2,9 @@ package tmt;
 
 import java.util.Objects;
 
-public final class Parcicipant implements Comparable<Parcicipant>{
+public final class Participant implements Comparable<Participant>{
     private  final String NAME;
-    public Parcicipant(String name) {
+    public Participant(String name) {
         this.NAME = name;
     }
 
@@ -17,7 +17,7 @@ public final class Parcicipant implements Comparable<Parcicipant>{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Parcicipant that = (Parcicipant) o;
+        Participant that = (Participant) o;
         return Objects.equals(NAME, that.NAME);
     }
 
@@ -27,7 +27,7 @@ public final class Parcicipant implements Comparable<Parcicipant>{
     }
 
     @Override
-    public int compareTo(Parcicipant otherParcicipant) {
-        return this.NAME.compareTo(otherParcicipant.NAME);
+    public int compareTo(Participant otherParticipant) {
+        return this.NAME.compareTo(otherParticipant.NAME);
     }
 }

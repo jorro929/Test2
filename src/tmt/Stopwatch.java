@@ -6,12 +6,13 @@ import java.util.Map;
 public class Stopwatch {
     public Stopwatch(ParticipantList workList) {
         this.workList = workList;
-    }
-    private ParticipantList workList;
-    private Map<Parcicipant,Long> runners = new HashMap<>();
+    }  
 
-    public void removeFromLap(Parcicipant parcicipant){
-        runners.remove(parcicipant);
+    private ParticipantList workList;
+    private Map<Participant,Long> runners = new HashMap<>();
+
+    public void removeFromLap(Participant participant){
+        runners.remove(participant);
     }
     public void clearRaceTrack(){
         runners.clear();
@@ -22,20 +23,20 @@ public class Stopwatch {
         return runners.toString();
     }
 
-    public boolean startMeasuring(Parcicipant parcicipant){
-        if(workList.contains(parcicipant)){
-            if(runners.containsKey(parcicipant)) {
-                endMeasuring(parcicipant);
+    public boolean startMeasuring(Participant participant){
+        if(workList.contains(participant)){
+            if(runners.containsKey(participant)) {
+                endMeasuring(participant);
             }
-            runners.put(parcicipant, System.currentTimeMillis());
+            runners.put(participant, System.currentTimeMillis());
 
             return true;
         }
         return false;
 
     }
-    private void endMeasuring(Parcicipant parcicipant){
-        workList.registrationTimeOfLap(parcicipant,System.currentTimeMillis() - runners.get(parcicipant));
-        removeFromLap(parcicipant);
+    private void endMeasuring(Participant participant){
+        workList.registrationTimeOfLap(participant,System.currentTimeMillis() - runners.get(participant));
+        removeFromLap(participant);
     }
 }
