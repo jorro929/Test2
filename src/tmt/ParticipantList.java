@@ -6,15 +6,15 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class ParticipantList {
-     private Map<Participant, ArrayList<TestTime>> listMap = new HashMap<>();
+     private Map<Participant, ArrayList<LapTime>> listMap = new HashMap<>();
     public void add(Participant parcicipant){
         this.listMap.putIfAbsent(parcicipant, new ArrayList<>());
     }
     public void remove(Participant parcicipant){
         listMap.remove(parcicipant);
     }
-    public void registrationTimeOfLap(Participant parcicipant, long timeOfLap){
-        listMap.get(parcicipant).add(new TestTime(timeOfLap));
+    public void registrationTimeOfLap(Participant parcicipant, LapTime timeOfLap){
+        listMap.get(parcicipant).add(timeOfLap);
     }
     public boolean contains(Participant parcicipant){
         return listMap.containsKey(parcicipant);
@@ -26,7 +26,7 @@ public class ParticipantList {
             return;
         }
         System.out.print("Time of " + parcicipant + "'s laps:\n{");
-        Iterator<TestTime> iterator = listMap.get(parcicipant).iterator();
+        Iterator<LapTime> iterator = listMap.get(parcicipant).iterator();
         while (iterator.hasNext()){
             System.out.println(iterator.next());
         }
@@ -36,7 +36,7 @@ public class ParticipantList {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder("List of Parcicipant: \n{");
-        for (Map.Entry<Participant, ArrayList<TestTime>> entry: listMap.entrySet()) {
+        for (Map.Entry<Participant, ArrayList<LapTime>> entry: listMap.entrySet()) {
             stringBuilder.append(entry.getKey() + "\n");
         }
         stringBuilder.append("}\n");
