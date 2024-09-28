@@ -3,7 +3,7 @@ package tmt;
 import java.util.Objects;
 
 public final class Participant implements Comparable<Participant>{
-    private  final String NAME;
+    private final String NAME;
     public Participant(String name) {
         this.NAME = name;
     }

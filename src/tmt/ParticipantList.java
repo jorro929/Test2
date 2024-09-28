@@ -26,10 +26,7 @@ public class ParticipantList {
             return;
         }
         System.out.print("Time of " + parcicipant + "'s laps:\n{");
-        Iterator<LapTime> iterator = listMap.get(parcicipant).iterator();
-        while (iterator.hasNext()){
-            System.out.println(iterator.next());
-        }
+       listMap.get(parcicipant).stream().forEach(System.out::println);
         System.out.println('}');
     }
 
