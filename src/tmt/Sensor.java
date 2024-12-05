@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Sensor implements Observed <Participant>{
 
-    private String name;
+    private final String name;
 
     private Participant lastParticipant;
 
@@ -20,7 +20,7 @@ public class Sensor implements Observed <Participant>{
 
     }
 
-    public void setLastParticipant(Participant lastParticipant) {
+    private void setLastParticipant(Participant lastParticipant) {
 
         this.lastParticipant = lastParticipant;
 
@@ -41,13 +41,18 @@ public class Sensor implements Observed <Participant>{
     }
 
     @Override
-    public void notifyObserver() {
+    public void notifyObserver(Participant participant) {
+        setLastParticipant(participant);
+        observerList.stream().forEach(o -> o.handleEvent(lastParticipant, this));
+    }
 
-
+    @Override
+    public Participant getLast() {
+        return lastParticipant;
     }
 
     @Override
     public String toString() {
-        return "Sensor{ name=" + name +'}';
+        return "Sensor{name=" + name +'}';
     }
 }

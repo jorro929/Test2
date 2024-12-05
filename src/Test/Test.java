@@ -1,7 +1,10 @@
 package Test;
 
 import tmt.*;
+import tmt_v2.Observed;
+import tmt_v2.Observer;
 import tmt_v2.lap.BaseLapBuilder;
+import tmt_v2.lap.Lap;
 import tmt_v2.lap.LapBuilder;
 
 import java.lang.reflect.Array;
@@ -15,12 +18,26 @@ import java.util.List;
 
 public class Test {
     public static void main(String[] args) throws InterruptedException {
-        LapBuilder lapBuilder = new BaseLapBuilder();
-        lapBuilder.addSector(230);
-        lapBuilder.addSector(315);
-        lapBuilder.addSector(194);
-        lapBuilder.setName("Monza");
 
-        System.out.println(lapBuilder.getLap());
+        TestObserver testObserver = new TestObserver();
+
+        LapBuilder lapBuilder = new BaseLapBuilder();
+        lapBuilder.setName("Monza");
+        lapBuilder.addSector(1500);
+        lapBuilder.addSector(2132);
+        lapBuilder.addSector(1900);
+        Lap testLap = lapBuilder.getLap();
+        testLap.connectToTrack(testObserver);
+        testLap.disconnectToTrack(testObserver);
+
+
+    }
+}
+
+class TestObserver implements Observer<Participant> {
+
+    @Override
+    public void handleEvent(Participant object, Observed<Participant> observed) {
+        System.out.println("Sensor " + observed + " fixes " + object + '!');
     }
 }
