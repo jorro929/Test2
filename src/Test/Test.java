@@ -7,17 +7,10 @@ import tmt_v2.lap.BaseLapBuilder;
 import tmt_v2.lap.Lap;
 import tmt_v2.lap.LapBuilder;
 
-import java.lang.reflect.Array;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAmount;
-import java.time.temporal.TemporalUnit;
-import java.util.Arrays;
-import java.util.List;
+
 
 public class Test {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
 
         TestObserver testObserver = new TestObserver();
 
