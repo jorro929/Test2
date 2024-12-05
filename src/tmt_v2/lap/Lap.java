@@ -32,7 +32,7 @@ public final class Lap {
         private final Sensor sensor;
 
         public Sector(String nameOfSectors, int length) {
-            sensor = new Sensor("nameOfSectors");
+            sensor = new Sensor(nameOfSectors);
             this.length = length;
         }
 
