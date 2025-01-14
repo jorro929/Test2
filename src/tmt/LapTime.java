@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class LapTime {
+public class LapTime implements Comparable<LapTime>{
     private final long startTime;
     private long lastPointTime;
     private TestTime TimeOfLap;
@@ -28,6 +28,7 @@ public class LapTime {
         return TimeOfLap;
     }
 
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder("Time Of Lap = " + TimeOfLap + " {");
@@ -49,5 +50,17 @@ public class LapTime {
     @Override
     public int hashCode() {
         return Objects.hash(TimeOfLap);
+    }
+
+    @Override
+    public int compareTo(LapTime otherLapTime) {
+        if (this.sectorsTime.size() == otherLapTime.sectorsTime.size()) {
+            return this.TimeOfLap.compareTo(otherLapTime.TimeOfLap);
+        }
+        try {
+            throw new DifferentLapException();
+        } catch (DifferentLapException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

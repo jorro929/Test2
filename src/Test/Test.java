@@ -1,35 +1,36 @@
 package Test;
 
 import tmt.*;
+import tmt_v2.Observed;
+import tmt_v2.Observer;
+import tmt_v2.lap.BaseLapBuilder;
+import tmt_v2.lap.Lap;
+import tmt_v2.lap.LapBuilder;
+
+
 
 public class Test {
-    public static void main(String[] args) throws InterruptedException {
-        Sensor<Participant> sensor1 = new Sensor<>();
-        Sensor<Participant> sensor2 = new Sensor<>();
-        Sensor<Participant> sensor3 = new Sensor<>();
+    public static void main(String[] args){
 
-        ParticipantList participantList = new ParticipantList();
+        TestObserver testObserver = new TestObserver();
 
-        Participant p1 = new Participant("Pido");
-        Participant p2 = new Participant("Frodo");
-        Participant p3 = new Participant("Timur");
+        LapBuilder lapBuilder = new BaseLapBuilder();
+        lapBuilder.setName("Monza");
+        lapBuilder.addSector(1500);
+        lapBuilder.addSector(2132);
+        lapBuilder.addSector(1900);
+        Lap testLap = lapBuilder.getLap();
+        testLap.connectToTrack(testObserver);
+        testLap.disconnectToTrack(testObserver);
 
-        participantList.add(p1);
-        participantList.add(p2);
-        participantList.add(p3);
 
-        Stopwatch stopwatch = new Stopwatch(participantList);
+    }
+}
 
-        stopwatch.startMeasuring(sensor1.fixingOdject(p1));
-        Thread.sleep(3000);
-        stopwatch.fixCheackPoint(sensor2.fixingOdject(p1));
-        Thread.sleep(3000);
-        stopwatch.fixCheackPoint(sensor3.fixingOdject(p1));
-        Thread.sleep(3000);
-        stopwatch.startMeasuring(sensor1.fixingOdject(p1));
-        stopwatch.removeFromLap(p1);
+class TestObserver implements Observer<Participant> {
 
-        participantList.showAllTimesOfLap(p1);
-
+    @Override
+    public void handleEvent(Participant object, Observed<Participant> observed) {
+        System.out.println("Sensor " + observed + " fixes " + object + '!');
     }
 }

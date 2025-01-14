@@ -1,6 +1,6 @@
 package tmt;
 
-public class TestTime implements Comparable<TestTime>{
+public final class TestTime implements Comparable<TestTime>{
     private final int hours;
     private final int minutes;
     private final int seconds;
