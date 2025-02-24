@@ -3,8 +3,8 @@ package tmt;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Stopwatch {
-    public Stopwatch(ParticipantList workList) {
+public class DirectorOfRace {
+    public DirectorOfRace(ParticipantList workList) {
         this.workList = workList;
     }
 
